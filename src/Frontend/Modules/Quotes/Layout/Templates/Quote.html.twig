@@ -8,7 +8,7 @@
       {% endif %}
       <div class="{% if quote.image %} col-10{% else %} col-12{% endif %}">
         {{ quote.quote|raw }}
-        <cite>{{ quote.name }}</cite>
+        <cite>{{ quote.name }}</cite>{% if quote.function %} - {{ quote.function }}{% endif %}
       </div>
     </div>
   </blockquote>

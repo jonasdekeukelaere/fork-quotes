@@ -49,6 +49,11 @@ final class QuoteType
             'form-control danger title'
         );
 
+        $this->form->addText(
+            'function',
+            $this->quote instanceof Quote ? $this->quote->getFunction() : null
+        );
+
         $this->form->addEditor(
             'quote',
             $this->quote instanceof Quote ? $this->quote->getQuote() : null
@@ -95,6 +100,7 @@ final class QuoteType
         if ($this->quote instanceof Quote) {
             $this->quote->changeQuote(
                 $fields['name']->getValue(),
+                $fields['function']->getValue(),
                 $fields['quote']->getValue()
             );
 
@@ -109,6 +115,7 @@ final class QuoteType
 
         $this->quote = Quote::create(
             $fields['name']->getValue(),
+            $fields['function']->getValue(),
             $fields['quote']->getValue(),
             $this->handleImage($fields['image'])
         );

@@ -29,6 +29,11 @@
         <translation language="nl"><![CDATA[quote toevoegen ]]></translation>
         <translation language="fr"><![CDATA[ajouter une citation]]></translation>
       </item>
+      <item type="label" name="Function">
+        <translation language="en"><![CDATA[function]]></translation>
+        <translation language="nl"><![CDATA[functie]]></translation>
+        <translation language="fr"><![CDATA[fonction]]></translation>
+      </item>
     </Quotes>
   </Backend>
 </locale>

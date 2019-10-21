@@ -15,6 +15,9 @@ final class Quote
     /** @var string $name */
     private $name;
 
+    /** @var string|null $function */
+    private $function;
+
     /** @var string $quote */
     private $quote;
 
@@ -35,6 +38,7 @@ final class Quote
 
     /**
      * @param string $name
+     * @param string|null $function
      * @param string $quote
      * @param string $createdOn
      * @param string $editedOn
@@ -45,6 +49,7 @@ final class Quote
      */
     private function __construct(
         $name,
+        $function,
         $quote,
         $createdOn,
         $editedOn,
@@ -55,6 +60,7 @@ final class Quote
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->function = $function;
         $this->quote = $quote;
         $this->image = $image;
         $this->createdOn = $createdOn;
@@ -65,15 +71,17 @@ final class Quote
 
     /**
      * @param string $name
+     * @param string|null $function
      * @param string $quote
      * @param string $image
      *
      * @return Quote
      */
-    public static function create($name, $quote, $image = null)
+    public static function create($name, $function, $quote, $image = null)
     {
         return new self(
             $name,
+            $function,
             $quote,
             new DateTime(),
             new DateTime(),
@@ -114,13 +122,15 @@ final class Quote
 
     /**
      * @param string $name
+     * @param string|null $function
      * @param string $quote
      *
      * @return Quote
      */
-    public function changeQuote($name, $quote)
+    public function changeQuote($name, $function, $quote)
     {
         $this->name = $name;
+        $this->function = $function;
         $this->quote = $quote;
         $this->editedOn = new DateTime();
 
@@ -150,6 +160,7 @@ final class Quote
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'function' => $this->function,
             'quote' => $this->quote,
             'image' => $this->image,
             'created_on' => $this->createdOn,
@@ -173,6 +184,14 @@ final class Quote
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFunction()
+    {
+        return $this->function;
     }
 
     /**
@@ -264,6 +283,7 @@ final class Quote
     {
         return new self(
             $quoteRecord['name'],
+            $quoteRecord['function'],
             $quoteRecord['quote'],
             DateTime::createFromFormat('Y-m-d H:i:s', $quoteRecord['created_on']),
             DateTime::createFromFormat('Y-m-d H:i:s', $quoteRecord['edited_on']),

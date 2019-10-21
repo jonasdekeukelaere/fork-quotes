@@ -12,6 +12,12 @@
         </label>
         {% form_field name %} {% form_field_error name %}
       </div>
+      <div class="form-group">
+        <label for="function" class="control-label">
+          {{ 'lbl.Function'|trans|capitalize }}
+        </label>
+        {% form_field function %} {% form_field_error function %}
+      </div>
       <div class="panel panel-default panel-editor">
         <div class="panel-heading">
           <label for="quote" class="control-label">
